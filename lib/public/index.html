@@ -16,10 +16,12 @@
         };
 
         var cb = function(){
+          var bit = Extractors.innerProductExtractor([videoBits.split(''), audioBits.split('')])
           document.body.innerHTML += '<p>';
           document.body.innerHTML += 'video: ' + videoBits.substring(0, 18) + '...' + ' audio: ' + audioBits.substring(0, 18) + '...<br>';
-          document.body.innerHTML += 'extracted bit: ' + Extractors.innerProductExtractor([videoBits.split(''), audioBits.split('')]);
+          document.body.innerHTML += 'extracted bit: ' + bit;
           document.body.innerHTML += '</p>';
+          document.getElementById('result').innerHTML += bit;
           done = wait(2, cb);
         };
         var done = wait(2, cb);
@@ -44,6 +46,7 @@ function stop(){
     <div>
       <button onclick="start()">start</button>
       <button onclick="stop()">stop</button>
+      <div id="result">Aggregated result: </div>
     </div>
   </body>
 </html>
