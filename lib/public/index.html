@@ -13,10 +13,12 @@ var wait = function(n, cb){
   };
 };
 
-var done = wait(2, function(){
+var cb = function(){
   console.log(videoBits, audioBits);
   console.log(Extractors.innerProductExtractor([videoBits.split(''), audioBits.split('')]));
-});
+  done = wait(2, cb);
+};
+var done = wait(2, cb);
 extractor.on('video', function(bits){
   videoBits = bits;
   done();
