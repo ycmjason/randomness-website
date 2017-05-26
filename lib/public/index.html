@@ -4,36 +4,46 @@
     <script src="node_modules/media-bits-extractor/dist/out.js"></script>
     <script src="node_modules/randomness-extractors/dist/out.js"></script>
     <script>
-var interval = 500;
-var extractor = new MediaBitsExtractor({video: true, audio: true}, interval);
-var wait = function(n, cb){
-  var count = 0;
-  return function done(){
-    if(count++ === n) cb();
-  };
-};
+      var extractor;
+      function start(){
+        var interval = 500;
+        extractor = new MediaBitsExtractor({video: true, audio: true}, interval);
+        var wait = function(n, cb){
+          var count = 0;
+          return function done(){
+            if(count++ === n) cb();
+          };
+        };
 
-var cb = function(){
-  document.body.innerHTML += '<p>';
-  document.body.innerHTML += 'video: ' + videoBits.substring(0, 18) + '...' + ' audio: ' + audioBits.substring(0, 18) + '...<br>';
-  document.body.innerHTML += 'extracted bit: ' + Extractors.innerProductExtractor([videoBits.split(''), audioBits.split('')]);
-  document.body.innerHTML += '</p>';
-  done = wait(2, cb);
-};
-var done = wait(2, cb);
-extractor.on('video', function(bits){
-  videoBits = bits;
-  done();
-});
+        var cb = function(){
+          document.body.innerHTML += '<p>';
+          document.body.innerHTML += 'video: ' + videoBits.substring(0, 18) + '...' + ' audio: ' + audioBits.substring(0, 18) + '...<br>';
+          document.body.innerHTML += 'extracted bit: ' + Extractors.innerProductExtractor([videoBits.split(''), audioBits.split('')]);
+          document.body.innerHTML += '</p>';
+          done = wait(2, cb);
+        };
+        var done = wait(2, cb);
+        extractor.on('video', function(bits){
+          videoBits = bits;
+          done();
+        });
 
-extractor.on('audio', function(bits){
-  audioBits = bits;
-  done();
-});
+        extractor.on('audio', function(bits){
+          audioBits = bits;
+          done();
+        });
 
-extractor.start();
+        extractor.start();
+      }
+function stop(){
+  extractor.stop();
+}
     </script>
   </head>
   <body>
+    <div>
+      <button onclick="start()">start</button>
+      <button onclick="stop()">stop</button>
+    </div>
   </body>
 </html>
