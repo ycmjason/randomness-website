@@ -18,10 +18,11 @@
         var cb = function(){
           var bit = Extractors.innerProductExtractor([videoBits.split(''), audioBits.split('')])
           document.body.innerHTML += '<p>';
-          document.body.innerHTML += 'video: ' + videoBits.substring(0, 18) + '...' + ' audio: ' + audioBits.substring(0, 18) + '...<br>';
+          document.body.innerHTML += 'video: [' + videoBits.length + '] ' + videoBits.substring(0, 28) + '...' + ' audio: [' + audioBits.length + '] ' + audioBits.substring(0, 28) + '...<br>';
           document.body.innerHTML += 'extracted bit: ' + bit;
           document.body.innerHTML += '</p>';
           document.getElementById('result').innerHTML += bit;
+          document.getElementById('result').style.visibility = visible;
           done = wait(2, cb);
         };
         var done = wait(2, cb);
@@ -44,9 +45,10 @@ function stop(){
   </head>
   <body>
     <div>
+      Click start to extract random bits using your webcam and microphone as sources!
       <button onclick="start()">start</button>
       <button onclick="stop()">stop</button>
-      <div id="result">Aggregated result: </div>
+      <div id="result" style="visibility: hidden">Aggregated result: </div>
     </div>
   </body>
 </html>
