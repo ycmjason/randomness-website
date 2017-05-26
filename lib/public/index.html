@@ -18,7 +18,7 @@
         var cb = function(){
           var bit = Extractors.innerProductExtractor([videoBits.split(''), audioBits.split('')])
           document.body.innerHTML += '<p>';
-          document.body.innerHTML += 'video: ' + videoBits.substring(0, 28) + '...' + ' audio: ' + audioBits.substring(0, 28) + '...<br>';
+          document.body.innerHTML += 'video: [' + videoBits.length + ']' + videoBits.substring(0, 28) + '...' + ' audio: [' + audioBits.length + ']' + audioBits.substring(0, 28) + '...<br>';
           document.body.innerHTML += 'extracted bit: ' + bit;
           document.body.innerHTML += '</p>';
           document.getElementById('result').innerHTML += bit;
