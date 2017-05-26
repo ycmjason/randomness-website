@@ -1,1 +1,35 @@
-working.
+<html>
+  <head>
+    <script src="https://webrtc.github.io/adapter/adapter-latest.js"></script>
+    <script src="node_modules/media-bits-extractor/dist/out.js"></script>
+    <script src="node_modules/randomness-extractors/dist/out.js"></script>
+    <script>
+var interval = 500;
+var extractor = new MediaBitsExtractor({video: true, audio: true}, interval);
+var wait = function(n, cb){
+  var count = 0;
+  return function done(){
+    if(count++ === n) cb();
+  };
+};
+
+var done = wait(2, function(){
+  console.log(videoBits, audioBits);
+  console.log(Extractors.innerProductExtractor([videoBits.split(''), audioBits.split('')]));
+});
+extractor.on('video', function(bits){
+  videoBits = bits;
+  done();
+});
+
+extractor.on('audio', function(bits){
+  audioBits = bits;
+  done();
+});
+
+extractor.start();
+    </script>
+  </head>
+  <body>
+  </body>
+</html>
