@@ -14,7 +14,7 @@ var wait = function(n, cb){
 };
 
 var cb = function(){
-  console.log(videoBits.substring(0, 8) + '...', audioBits.substring(0, 8) + '...');
+  console.log('video: ' + videoBits.substring(0, 8) + '...', 'audio: ' + audioBits.substring(0, 8) + '...');
   console.log(Extractors.innerProductExtractor([videoBits.split(''), audioBits.split('')]));
   done = wait(2, cb);
 };
