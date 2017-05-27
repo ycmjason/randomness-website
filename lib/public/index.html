@@ -1,47 +1,7 @@
 <html>
   <head>
     <script src="https://webrtc.github.io/adapter/adapter-latest.js"></script>
-    <script src="node_modules/media-bits-extractor/dist/out.js"></script>
-    <script src="node_modules/randomness-extractors/dist/out.js"></script>
-    <script>
-      var extractor;
-      function start(){
-        var interval = 1000;
-        extractor = new MediaBitsExtractor({video: true, audio: true}, interval);
-        var wait = function(n, cb){
-          var count = 0;
-          return function done(){
-            if(count++ === n) cb();
-          };
-        };
-
-        var cb = function(){
-          var bit = Extractors.innerProductExtractor([videoBits.split(''), audioBits.split('')])
-          document.body.innerHTML += '<p>';
-          document.body.innerHTML += 'video: [' + videoBits.length + ']' + videoBits.substring(0, 28) + '...' + ' audio: [' + audioBits.length + ']' + audioBits.substring(0, 28) + '...<br>';
-          document.body.innerHTML += 'extracted bit: ' + bit;
-          document.body.innerHTML += '</p>';
-          document.getElementById('result').innerHTML += bit;
-          document.getElementById('result').style.visibility = 'visible';
-          done = wait(2, cb);
-        };
-        var done = wait(2, cb);
-        extractor.on('video', function(bits){
-          videoBits = bits;
-          done();
-        });
-
-        extractor.on('audio', function(bits){
-          audioBits = bits;
-          done();
-        });
-
-        extractor.start();
-      }
-function stop(){
-  extractor.stop();
-}
-    </script>
+    <script src="dist/bundle.js"></script>
   </head>
   <body>
     <div>
