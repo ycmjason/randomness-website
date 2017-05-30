@@ -11,12 +11,14 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "media-bits-extractor": "^0.1.1",
+    "media-bits-recorder": "^0.1.4",
     "randomness-extractors": "0.0.2",
     "react": "^15.5.4",
     "react-dom": "^15.5.4",
     "react-redux": "^5.0.5",
-    "redux": "^3.6.0"
+    "redux": "^3.6.0",
+    "redux-logger": "^3.0.6",
+    "webrtc-adapter": "^3.4.3"
   },
   "devDependencies": {
     "babel-core": "^6.24.1",
@@ -24,9 +26,6 @@
     "babel-polyfill": "^6.23.0",
     "babel-preset-env": "^1.5.1",
     "babel-preset-react": "^6.24.1",
-    "redux-logger": "^3.0.6",
-    "redux-thunk": "^2.2.0",
-    "webpack": "^2.6.1",
-    "webrtc-adapter": "^3.4.3"
+    "webpack": "^2.6.1"
   }
 }
