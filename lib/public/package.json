@@ -6,18 +6,21 @@
   "scripts": {
     "build": "webpack",
     "build:min": "webpack  --optimize-minimize",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "mocha --require babel-register --recursive"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
     "media-bits-recorder": "^0.1.4",
+    "mocha": "^3.4.2",
+    "prop-types": "^15.5.10",
     "randomness-extractors": "0.0.2",
     "react": "^15.5.4",
     "react-dom": "^15.5.4",
     "react-redux": "^5.0.5",
     "redux": "^3.6.0",
     "redux-logger": "^3.0.6",
+    "skeleton-css": "^2.0.4",
     "webrtc-adapter": "^3.4.3"
   },
   "devDependencies": {
@@ -26,6 +29,7 @@
     "babel-polyfill": "^6.23.0",
     "babel-preset-env": "^1.5.1",
     "babel-preset-react": "^6.24.1",
+    "babel-register": "^6.24.1",
     "webpack": "^2.6.1"
   }
 }
