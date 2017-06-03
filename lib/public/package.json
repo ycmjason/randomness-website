@@ -13,6 +13,7 @@
   "dependencies": {
     "media-bits-recorder": "^0.2.0",
     "mocha": "^3.4.2",
+    "nist-randomness-test-suite": "0.0.6",
     "prop-types": "^15.5.10",
     "randomness-extractors": "0.0.2",
     "react": "^15.5.4",
