@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "node lib/index.js",
+    "clean": "rm -rf node_modules && rm -rf lib/public/node_modules",
     "postinstall": "cd lib/public/ && npm install",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -20,7 +21,6 @@
   "homepage": "https://github.com/ycmjason/randomness-website#readme",
   "dependencies": {
     "express": "^4.15.3",
-    "morgan": "^1.8.2",
-    "randomness-extractors": "0.0.2"
+    "morgan": "^1.8.2"
   }
 }
